@@ -1,10 +1,14 @@
 const sequelize = require('../db');
 const { DataTypes } = require('sequelize');
 
-const Admin = sequelize.define('admin', {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  password: { type: DataTypes.STRING },
-});
+const Admin = sequelize.define(
+  'admin',
+  {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    password: { type: DataTypes.STRING },
+  },
+  { timestamps: false, createdAt: false, updatedAt: false },
+);
 
 const Product = sequelize.define('product', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
