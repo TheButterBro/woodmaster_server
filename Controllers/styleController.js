@@ -1,4 +1,4 @@
-const { Style } = require('../models/models');
+const { Style, Product } = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class styleController {
@@ -21,10 +21,18 @@ class styleController {
   }
   async delete(req, res, next) {
     try {
-      const { id } = req.body;
-      const style = await Style.destroy({
-        where: { id: id },
+      let { id } = req.params;
+      let { categoriesId, number } = req.body;
+
+      Product.update(
+        { categories: null, styleID: null },
+        { where: { categories: categoriesId, styleID: id } },
+      );
+
+      let style = await Style.destroy({
+        where: { number, number },
       });
+
       return res.json(style);
     } catch (error) {
       next(ApiError.badReq(error.message));

@@ -30,6 +30,25 @@ class productController {
             productId: product.id,
           }),
         );
+      } else {
+        ProductDescription.create({
+          title: 'Материалы',
+          text: 'Произвольные',
+          number: Date.now(),
+          productId: product.id,
+        });
+        ProductDescription.create({
+          title: 'Тон',
+          text: 'Индивидуальный',
+          number: Date.now(),
+          productId: product.id,
+        });
+        ProductDescription.create({
+          title: 'Размеры',
+          text: 'Индивидуальные',
+          number: Date.now(),
+          productId: product.id,
+        });
       }
 
       return res.json(product);

@@ -60,10 +60,14 @@ class categoriesController {
   }
   async delete(req, res, next) {
     try {
-      const { id } = req.body;
+      const { id } = req.params;
+
+      await Product.update({ categories: null, styleID: null }, { where: { categories: id } });
+
       const category = await Categories.destroy({
         where: { id: id },
       });
+
       return res.json(category);
     } catch (error) {
       next(ApiError.badReq(error.message));

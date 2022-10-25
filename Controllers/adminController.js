@@ -4,7 +4,6 @@ const ApiError = require('../error/ApiError');
 class adminController {
   async check(req, res, next) {
     try {
-      console.log('AUTH');
       let { password } = req.body;
 
       const admin = await Admin.findOne({
