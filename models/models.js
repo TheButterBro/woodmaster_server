@@ -7,7 +7,7 @@ const Admin = sequelize.define(
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     password: { type: DataTypes.STRING },
   },
-  { timestamps: false, createdAt: false, updatedAt: false },
+  // { timestamps: false, createdAt: false, updatedAt: false },
 );
 
 const Product = sequelize.define('product', {
