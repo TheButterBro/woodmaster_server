@@ -2,18 +2,6 @@ const { Admin } = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class adminController {
-  async create(req, res, next) {
-    try {
-      let { password } = req.body;
-
-      const admin = await Admin.create({
-        password,
-      });
-      return res.json(admin);
-    } catch (error) {
-      next(ApiError.badReq(error.message));
-    }
-  }
   async check(req, res, next) {
     try {
       let { password } = req.body;
